@@ -1,0 +1,30 @@
+This project contains a UDP Echo Server and its corresponding client as well as
+a blocking TCP Echo Server and its corresponding client.  
+
+The UDP Echo Server creates a socket bound to port 1060 of the specified 
+interface or 0.0.0.0 if not specified and waits to receive messages.  Each time 
+it receives a message, it echoes it back to the sender.  
+
+The UDP Echo Client opens a socket, sends the specified messsage to the 
+specified host, waits to receive a message back from the host, closes the 
+socket and exits.
+
+The TCP Echo Server creates a socket bound to port 1060 of the specified
+interface to listen for connection requests.  Each time it receives a connection
+request, it accepts it which creates a socket for communication between itself
+and the client. The server waits to receive a message which it considers to be
+all the data sent over the socket until the client shuts down the socket for
+writing.  Then it echoes the message back to the client and closes the socket.
+
+The TCP Echo Client opens a socket, connects to the server, sends the specified
+message and shuts down the socket for writing.  Then it waits to receive a
+message from the server at which point it closes the socket and exits.
+
+Invocation:
+
+UDP Echo Server: python udp_echo.py server [interface]
+UDP Echo Client: python udp_echo.py client host message 
+
+TDP Echo Server: python tdp_echo.py server [interface]
+TDP Echo Client: python tdp_echo.py client host message 
+
