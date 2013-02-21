@@ -1,12 +1,12 @@
-This project contains a blocking TCP Echo Server and its corresponding client.  
+This project contains a non-blocking TCP Echo Server and its corresponding 
+client.  
 
 The TCP Echo Server creates a socket bound to port 1060 of the specified
-interface to listen for a connection request.  When it receives one, it accepts
-it which creates a socket for communication between itself and the client. 
-The server waits to receive a message which ends with an end of line
-character (\n).  Then it echoes the message back to the client.  
-When the server detects that the client has closed the socket, it closes the
-socket as well and goes back to listening for a connection request. 
+interface to listen for connection requests. The server accepts each
+connection request received which creates a socket for communication between 
+itself and the client. While still accepting connection requests, the server
+also looks for messages from all connected clients and echoes any received
+messages back to the sender.
 
 The TCP Echo Client opens a socket and connects to the server.  It reads lines 
 of input from the user, sending each line as a message to the server and waiting
